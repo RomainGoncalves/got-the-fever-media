@@ -324,13 +324,7 @@ function bulk_edit_posts( $post_data = null ) {
 
 	$post_IDs = array_map( 'intval', (array) $post_data['post'] );
 
-	$reset = array(
-		'post_author', 'post_status', 'post_password',
-		'post_parent', 'page_template', 'comment_status',
-		'ping_status', 'keep_private', 'tax_input',
-		'post_category', 'sticky', 'post_format',
-	);
-
+	$reset = array( 'post_author', 'post_status', 'post_password', 'post_parent', 'page_template', 'comment_status', 'ping_status', 'keep_private', 'tax_input', 'post_category', 'sticky' );
 	foreach ( $reset as $field ) {
 		if ( isset($post_data[$field]) && ( '' == $post_data[$field] || -1 == $post_data[$field] ) )
 			unset($post_data[$field]);
@@ -424,9 +418,6 @@ function bulk_edit_posts( $post_data = null ) {
 			else
 				unstick_post( $post_ID );
 		}
-
-		if ( isset( $post_data['post_format'] ) )
-			set_post_format( $post_ID, $post_data['post_format'] );
 	}
 
 	return array( 'updated' => $updated, 'skipped' => $skipped, 'locked' => $locked );
@@ -1004,9 +995,9 @@ function postbox_classes( $id, $page ) {
  * @return array With two entries of type string
  */
 function get_sample_permalink($id, $title = null, $name = null) {
-	$post = get_post( $id );
-	if ( ! $post )
-		return array( '', '' );
+	$post = get_post($id);
+	if ( !$post->ID )
+		return array('', '');
 
 	$ptype = get_post_type_object($post->post_type);
 
@@ -1066,9 +1057,8 @@ function get_sample_permalink($id, $title = null, $name = null) {
  * @return string The HTML of the sample permalink slug editor.
  */
 function get_sample_permalink_html( $id, $new_title = null, $new_slug = null ) {
-	$post = get_post( $id );
-	if ( ! $post )
-		return '';
+	global $wpdb;
+	$post = get_post($id);
 
 	list($permalink, $post_name) = get_sample_permalink($post->ID, $new_title, $new_slug);
 

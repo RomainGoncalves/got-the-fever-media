@@ -10,7 +10,7 @@
  */
 
 /** Load WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once('./admin.php');
 
 if (!current_user_can('upload_files'))
 	wp_die(__('You do not have permission to upload files.'));

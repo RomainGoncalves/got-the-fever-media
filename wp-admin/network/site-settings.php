@@ -8,7 +8,7 @@
  */
 
 /** Load WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once( './admin.php' );
 
 if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
@@ -77,7 +77,7 @@ $title = sprintf( __('Edit Site: %s'), $site_url_no_http );
 $parent_file = 'sites.php';
 $submenu_file = 'sites.php';
 
-require( ABSPATH . 'wp-admin/admin-header.php' );
+require('../admin-header.php');
 
 ?>
 
@@ -152,4 +152,4 @@ if ( ! empty( $messages ) ) {
 
 </div>
 <?php
-require( ABSPATH . 'wp-admin/admin-footer.php' );
+require('../admin-footer.php');

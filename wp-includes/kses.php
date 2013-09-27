@@ -230,7 +230,6 @@ if ( ! CUSTOM_TAGS ) {
 		),
 		'li' => array(
 			'align' => true,
-			'value' => true,
 		),
 		'map' => array(
 			'name' => true,

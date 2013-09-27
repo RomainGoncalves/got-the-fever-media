@@ -21,10 +21,10 @@
  * @param int $expire When the cache data should be expired
  * @return bool False if cache key and group already exist, true on success
  */
-function wp_cache_add( $key, $data, $group = '', $expire = 0 ) {
+function wp_cache_add($key, $data, $group = '', $expire = 0) {
 	global $wp_object_cache;
 
-	return $wp_object_cache->add( $key, $data, $group, (int) $expire );
+	return $wp_object_cache->add($key, $data, $group, $expire);
 }
 
 /**
@@ -154,10 +154,10 @@ function wp_cache_init() {
  * @param int $expire When to expire the cache contents
  * @return bool False if not exists, true if contents were replaced
  */
-function wp_cache_replace( $key, $data, $group = '', $expire = 0 ) {
+function wp_cache_replace($key, $data, $group = '', $expire = 0) {
 	global $wp_object_cache;
 
-	return $wp_object_cache->replace( $key, $data, $group, (int) $expire );
+	return $wp_object_cache->replace($key, $data, $group, $expire);
 }
 
 /**
@@ -173,10 +173,10 @@ function wp_cache_replace( $key, $data, $group = '', $expire = 0 ) {
  * @param int $expire When to expire the cache contents
  * @return bool False on failure, true on success
  */
-function wp_cache_set( $key, $data, $group = '', $expire = 0 ) {
+function wp_cache_set($key, $data, $group = '', $expire = 0) {
 	global $wp_object_cache;
 
-	return $wp_object_cache->set( $key, $data, $group, (int) $expire );
+	return $wp_object_cache->set($key, $data, $group, $expire);
 }
 
 /**
@@ -320,7 +320,7 @@ class WP_Object_Cache {
 	 * @param int $expire When to expire the cache contents
 	 * @return bool False if cache key and group already exist, true on success
 	 */
-	function add( $key, $data, $group = 'default', $expire = 0 ) {
+	function add( $key, $data, $group = 'default', $expire = '' ) {
 		if ( wp_suspend_cache_addition() )
 			return false;
 
@@ -334,7 +334,7 @@ class WP_Object_Cache {
 		if ( $this->_exists( $id, $group ) )
 			return false;
 
-		return $this->set( $key, $data, $group, (int) $expire );
+		return $this->set($key, $data, $group, $expire);
 	}
 
 	/**
@@ -509,7 +509,7 @@ class WP_Object_Cache {
 	 * @param int $expire When to expire the cache contents
 	 * @return bool False if not exists, true if contents were replaced
 	 */
-	function replace( $key, $data, $group = 'default', $expire = 0 ) {
+	function replace( $key, $data, $group = 'default', $expire = '' ) {
 		if ( empty( $group ) )
 			$group = 'default';
 
@@ -520,7 +520,7 @@ class WP_Object_Cache {
 		if ( ! $this->_exists( $id, $group ) )
 			return false;
 
-		return $this->set( $key, $data, $group, (int) $expire );
+		return $this->set( $key, $data, $group, $expire );
 	}
 
 	/**
@@ -559,7 +559,7 @@ class WP_Object_Cache {
 	 * @param int $expire Not Used
 	 * @return bool Always returns true
 	 */
-	function set( $key, $data, $group = 'default', $expire = 0 ) {
+	function set($key, $data, $group = 'default', $expire = '') {
 		if ( empty( $group ) )
 			$group = 'default';
 

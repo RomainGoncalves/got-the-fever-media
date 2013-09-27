@@ -10,7 +10,7 @@
  */
 
 /** Load WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once ('admin.php');
 
 wp_reset_vars( array( 'action', 'cat_id', 'link_id' ) );
 
@@ -111,8 +111,8 @@ switch ($action) {
 		if (!$link = get_link_to_edit($link_id))
 			wp_die(__('Link not found.'));
 
-		include( ABSPATH . 'wp-admin/edit-link-form.php' );
-		include( ABSPATH . 'wp-admin/admin-footer.php' );
+		include ('edit-link-form.php');
+		include ('admin-footer.php');
 		break;
 
 	default :

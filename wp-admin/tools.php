@@ -7,7 +7,7 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once('./admin.php');
 
 $title = __('Tools');
 
@@ -29,7 +29,7 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="http://wordpress.org/support/" target="_blank">Support Forums</a>') . '</p>'
 );
 
-require_once( ABSPATH . 'wp-admin/admin-header.php' );
+require_once('./admin-header.php');
 
 ?>
 <div class="wrap">
@@ -68,4 +68,4 @@ do_action( 'tool_box' );
 ?>
 </div>
 <?php
-include( ABSPATH . 'wp-admin/admin-footer.php' );
+include('./admin-footer.php');

@@ -36,10 +36,10 @@ define( 'WP_INSTALLING', true );
 require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
 /** Load WordPress Administration Upgrade API */
-require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+require_once( dirname( __FILE__ ) . '/includes/upgrade.php' );
 
 /** Load wpdb */
-require_once( ABSPATH . 'wp-includes/wp-db.php' );
+require_once(dirname(dirname(__FILE__)) . '/wp-includes/wp-db.php');
 
 $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
 
@@ -85,7 +85,7 @@ function display_setup_form( $error = null ) {
 		$blog_public = isset( $_POST['blog_public'] );
 
 	$weblog_title = isset( $_POST['weblog_title'] ) ? trim( wp_unslash( $_POST['weblog_title'] ) ) : '';
-	$user_name = isset($_POST['user_name']) ? trim( wp_unslash( $_POST['user_name'] ) ) : '';
+	$user_name = isset($_POST['user_name']) ? trim( wp_unslash( $_POST['user_name'] ) ) : 'admin';
 	$admin_password = isset($_POST['admin_password']) ? trim( wp_unslash( $_POST['admin_password'] ) ) : '';
 	$admin_email  = isset( $_POST['admin_email']  ) ? trim( wp_unslash( $_POST['admin_email'] ) ) : '';
 
@@ -190,7 +190,7 @@ switch($step) {
 		display_header();
 		// Fill in the data we gathered
 		$weblog_title = isset( $_POST['weblog_title'] ) ? trim( wp_unslash( $_POST['weblog_title'] ) ) : '';
-		$user_name = isset($_POST['user_name']) ? trim( wp_unslash( $_POST['user_name'] ) ) : '';
+		$user_name = isset($_POST['user_name']) ? trim( wp_unslash( $_POST['user_name'] ) ) : 'admin';
 		$admin_password = isset($_POST['admin_password']) ? wp_unslash( $_POST['admin_password'] ) : '';
 		$admin_password_check = isset($_POST['admin_password2']) ? wp_unslash( $_POST['admin_password2'] ) : '';
 		$admin_email  = isset( $_POST['admin_email']  ) ?trim( wp_unslash( $_POST['admin_email'] ) ) : '';

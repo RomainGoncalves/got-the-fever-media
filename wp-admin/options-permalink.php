@@ -7,7 +7,7 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once('./admin.php');
 
 if ( ! current_user_can( 'manage_options' ) )
 	wp_die( __( 'You do not have sufficient permissions to manage options for this site.' ) );
@@ -75,7 +75,7 @@ $home_path = get_home_path();
 $iis7_permalinks = iis7_supports_permalinks();
 
 $prefix = $blog_prefix = '';
-if ( ! got_url_rewrite() )
+if ( ! got_mod_rewrite() && ! $iis7_permalinks )
 	$prefix = '/index.php';
 if ( is_multisite() && !is_subdomain_install() && is_main_site() )
 	$blog_prefix = '/blog';
@@ -126,8 +126,6 @@ if ( $iis7_permalinks ) {
 		$writable = true;
 	else
 		$writable = false;
-} elseif ( $is_nginx ) {
-	$writable = false;
 } else {
 	if ( ( ! file_exists($home_path . '.htaccess') && is_writable($home_path) ) || is_writable($home_path . '.htaccess') )
 		$writable = true;
@@ -154,8 +152,6 @@ if ( ! is_multisite() ) {
 			_e('Permalink structure updated. Remove write access on web.config file now!');
 		else
 			_e('Permalink structure updated.');
-	} elseif ( $is_nginx ) {
-		_e('Permalink structure updated.');
 	} else {
 		if ( $permalink_structure && ! $usingpi && ! $writable )
 			_e('You should update your .htaccess now.');
@@ -176,7 +172,7 @@ if ( ! is_multisite() ) {
 <form name="form" action="options-permalink.php" method="post">
 <?php wp_nonce_field('update-permalink') ?>
 
-  <p><?php _e('By default WordPress uses web <abbr title="Universal Resource Locator">URL</abbr>s which have question marks and lots of numbers in them; however, WordPress offers you the ability to create a custom URL structure for your permalinks and archives. This can improve the aesthetics, usability, and forward-compatibility of your links. A <a href="http://codex.wordpress.org/Using_Permalinks">number of tags are available</a>, and here are some examples to get you started.'); ?></p>
+  <p><?php _e('By default WordPress uses web <abbr title="Universal Resource Locator">URL</abbr>s which have question marks and lots of numbers in them, however WordPress offers you the ability to create a custom URL structure for your permalinks and archives. This can improve the aesthetics, usability, and forward-compatibility of your links. A <a href="http://codex.wordpress.org/Using_Permalinks">number of tags are available</a>, and here are some examples to get you started.'); ?></p>
 
 <?php
 if ( is_multisite() && !is_subdomain_install() && is_main_site() ) {
@@ -230,9 +226,9 @@ $structures = array(
 
 <h3 class="title"><?php _e('Optional'); ?></h3>
 <?php
-$suffix = $prefix;
-if ( $suffix )
-	$suffix = ltrim( $suffix, '/' ) . '/';
+$suffix = '';
+if ( ! $is_apache && ! $iis7_permalinks )
+	$suffix = $wp_rewrite->index . '/';
 ?>
 <p><?php
 /* translators: %s is a placeholder that must come at the start of the URL path. */
@@ -273,7 +269,7 @@ printf( __('If you like, you may enter custom structures for your category and t
 <p><?php _e('If you temporarily make your site&#8217;s root directory writable for us to generate the <code>web.config</code> file automatically, do not forget to revert the permissions after the file has been created.') ?></p>
 		<?php endif; ?>
 	<?php endif; ?>
-<?php elseif ( ! $is_nginx ) :
+<?php else :
 	if ( $permalink_structure && ! $usingpi && ! $writable ) : ?>
 <p><?php _e('If your <code>.htaccess</code> file were <a href="http://codex.wordpress.org/Changing_File_Permissions">writable</a>, we could do this automatically, but it isn&#8217;t so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all.') ?></p>
 <form action="options-permalink.php" method="post">
@@ -286,4 +282,4 @@ printf( __('If you like, you may enter custom structures for your category and t
 
 </div>
 
-<?php require( ABSPATH . 'wp-admin/admin-footer.php' ); ?>
+<?php require('./admin-footer.php'); ?>

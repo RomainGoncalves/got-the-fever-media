@@ -7,7 +7,7 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( dirname( __FILE__ ) . '/admin.php' );
+require_once( './admin.php' );
 
 if ( ! current_user_can( 'list_users' ) )
 	wp_die( __( 'Cheatin&#8217; uh?' ) );
@@ -211,7 +211,7 @@ case 'delete':
 
 	add_action( 'admin_head', 'delete_users_add_js' );
 
-	include( ABSPATH . 'wp-admin/admin-header.php' );
+	include ('admin-header.php');
 ?>
 <form action="" method="post" name="updateusers" id="updateusers">
 <?php wp_nonce_field('delete-users') ?>
@@ -316,7 +316,7 @@ case 'remove':
 	else
 		$userids = $_REQUEST['users'];
 
-	include( ABSPATH . 'wp-admin/admin-header.php' );
+	include ('admin-header.php');
 ?>
 <form action="" method="post" name="updateusers" id="updateusers">
 <?php wp_nonce_field('remove-users') ?>
@@ -368,7 +368,7 @@ default:
 		exit;
 	}
 
-	include( ABSPATH . 'wp-admin/admin-header.php' );
+	include('./admin-header.php');
 
 	$messages = array();
 	if ( isset($_GET['update']) ) :
@@ -455,4 +455,4 @@ break;
 
 } // end of the $doaction switch
 
-include( ABSPATH . 'wp-admin/admin-footer.php' );
+include('./admin-footer.php');

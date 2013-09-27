@@ -495,6 +495,7 @@ commentReply = {
 		t.revert();
 
 		r = r.responses[0];
+		c = r.data;
 		id = '#comment-' + r.id;
 
 		if ( 'edit-comment' == t.act )
@@ -512,10 +513,8 @@ commentReply = {
 			}
 		}
 
-		c = $.trim(r.data); // Trim leading whitespaces
 		$(c).hide()
 		$('#replyrow').after(c);
-
 		id = $(id);
 		t.addEvents(id);
 		bg = id.hasClass('unapproved') ? '#FFFFE0' : id.closest('.widefat, .postbox').css('backgroundColor');

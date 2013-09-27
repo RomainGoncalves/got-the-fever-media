@@ -73,25 +73,6 @@ function get_archive_template() {
 }
 
 /**
- * Retrieve path of post type archive template in current or parent template.
- *
- * @since 3.7.0
- *
- * @return string
- */
-function get_post_type_archive_template() {
-	$post_type = get_query_var( 'post_type' );
-	if ( is_array( $post_type ) )
-		$post_type = reset( $post_type );
-
-	$obj = get_post_type_object( $post_type );
-	if ( ! $obj->has_archive )
-		return '';
-
-	return get_archive_template();
-}
-
-/**
  * Retrieve path of author template in current or parent template.
  *
  * @since 1.5.0
@@ -103,7 +84,7 @@ function get_author_template() {
 
 	$templates = array();
 
-	if ( is_a( $author, 'WP_User' ) ) {
+	if ( $author ) {
 		$templates[] = "author-{$author->user_nicename}.php";
 		$templates[] = "author-{$author->ID}.php";
 	}
@@ -129,7 +110,7 @@ function get_category_template() {
 
 	$templates = array();
 
-	if ( ! empty( $category->slug ) ) {
+	if ( $category ) {
 		$templates[] = "category-{$category->slug}.php";
 		$templates[] = "category-{$category->term_id}.php";
 	}
@@ -155,7 +136,7 @@ function get_tag_template() {
 
 	$templates = array();
 
-	if ( ! empty( $tag->slug ) ) {
+	if ( $tag ) {
 		$templates[] = "tag-{$tag->slug}.php";
 		$templates[] = "tag-{$tag->term_id}.php";
 	}
@@ -186,7 +167,7 @@ function get_taxonomy_template() {
 
 	$templates = array();
 
-	if ( ! empty( $term->slug ) ) {
+	if ( $term ) {
 		$taxonomy = $term->taxonomy;
 		$templates[] = "taxonomy-$taxonomy-{$term->slug}.php";
 		$templates[] = "taxonomy-$taxonomy.php";
@@ -260,8 +241,7 @@ function get_page_template() {
 	if ( ! $pagename && $id ) {
 		// If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object
 		$post = get_queried_object();
-		if ( $post )
-			$pagename = $post->post_name;
+		$pagename = $post->post_name;
 	}
 
 	$templates = array();
@@ -310,7 +290,7 @@ function get_single_template() {
 
 	$templates = array();
 
-	if ( ! empty( $object->post_type ) )
+	if ( $object )
 		$templates[] = "single-{$object->post_type}.php";
 	$templates[] = "single.php";
 
@@ -341,12 +321,10 @@ function get_attachment_template() {
 		if ( ! empty( $type ) ) {
 			if ( $template = get_query_template( $type[0] ) )
 				return $template;
-			elseif ( ! empty( $type[1] ) ) {
-				if ( $template = get_query_template( $type[1] ) )
-					return $template;
-				elseif ( $template = get_query_template( "$type[0]_$type[1]" ) )
-					return $template;
-			}
+			elseif ( $template = get_query_template( $type[1] ) )
+				return $template;
+			elseif ( $template = get_query_template( "$type[0]_$type[1]" ) )
+				return $template;
 		}
 	}
 
