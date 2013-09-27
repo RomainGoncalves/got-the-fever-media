@@ -66,7 +66,7 @@ if(!class_exists('AQ_Tabs_Block')) {
 		function tab($tab = array(), $count = 0) {
 				
 			?>
-			<li id="<?php echo $this->get_field_id('testimonials') ?>-sortable-item-<?php echo $count ?>" class="sortable-item" rel="<?php echo $count ?>">
+			<li id="<?php echo $this->get_field_id('tabs') ?>-sortable-item-<?php echo $count ?>" class="sortable-item" rel="<?php echo $count ?>">
 				
 				<div class="sortable-head cf">
 					<div class="sortable-title">
@@ -179,7 +179,7 @@ if(!class_exists('AQ_Tabs_Block')) {
 		
 		/* AJAX add tab */
 		function add_tab() {
-			$nonce = $_POST['security'];	
+			$nonce = $_POST['security'];
 			if (! wp_verify_nonce($nonce, 'aqpb-settings-page-nonce') ) die('-1');
 			
 			$count = isset($_POST['count']) ? absint($_POST['count']) : false;

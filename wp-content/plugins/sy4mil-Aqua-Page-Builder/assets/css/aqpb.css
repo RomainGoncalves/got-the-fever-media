@@ -9,8 +9,11 @@ DO NOT EDIT THIS
 **/
 
 /*generic*/
+.clearfix:after,
 .cf:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clearfix,
 .cf{display:block;}
+* html .clearfix,
 * html .cf{height:1%;}
 a:hover, a:active, a:focus { color: #d54e21; }
 /*builder page*/
@@ -94,7 +97,7 @@ a:hover, a:active, a:focus { color: #d54e21; }
 	#page-builder .aqpb-tabs { 
 		float: left;
 		margin-left: 0;
-		margin-right: -400px;
+		margin-right: -9999px;
 		padding-right: 10px;
 	}
 	.aqpb-tab { 
@@ -126,6 +129,9 @@ a:hover, a:active, a:focus { color: #d54e21; }
 			-webkit-box-shadow: inset 0 1px 0 #fff;
 			box-shadow: inset 0 1px 0 #fff;
 		}
+	.aqpb-tab-sortable {
+		float: left;
+	}
 	
 /*header*/
 #page-builder .major-publishing-actions { 
@@ -224,6 +230,7 @@ a:hover, a:active, a:focus { color: #d54e21; }
 }
 	#page-builder .block-title {overflow: hidden;}
 	#blocks-archive .block-title {position: absolute;}
+	.in-block-title { color: #606060; }
 #page-builder .block-controls { 
 	font-size: 12px;
 	position: absolute;
@@ -382,30 +389,3 @@ margin-left: 20px;
 	margin-left: 20px;
 	list-style-type: disc;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
