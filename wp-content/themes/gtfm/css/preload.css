@@ -1,0 +1,26 @@
+/*
+* Preload
+* 
+* @package WP Form
+* @subpackage CSS
+*/
+
+body{display:none;}
+#jpreOverlay {background-color: transparent; }
+#jpreLoader{width:200px;height:1px;	background: #222; margin: 0 auto; top: -11px;}
+#jpreBar {	background-color:#777774; }
+#jprePercentage {	text-align:center; font-family: 'cardoitalic'; font-size:18px; letter-spacing: 0; top: 15px;}	
+.hide {display: none!important;}
+.opacity {opacity: 0;}
+.trestres {background: #333!important;}
+.overflow {overflow: hidden;}
+.padding-top-preload {padding-top: 22%!important;}body{display:none;}
+#jpreOverlay {background-color: transparent; }
+#jpreLoader{width:200px;height:1px;	background: #222; margin: 0 auto; top: -11px;}
+#jpreBar {	background-color:#777774; }
+#jprePercentage {	text-align:center; font-family: 'cardoitalic'; font-size:18px; letter-spacing: 0; top: 15px;}	
+.hide {display: none!important;}
+.opacitya {opacity: 0;}
+.trestres {background: #333!important;}
+.overflow {overflow: hidden;}
+.padding-top-preload {padding-top: 22%!important;}

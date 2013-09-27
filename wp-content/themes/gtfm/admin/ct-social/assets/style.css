@@ -1,0 +1,22 @@
+/*
+* Styles
+* 
+* @package CT Social
+* @subpackage CSS
+*
+
+/* ============================================================================== */
+/* Browser Reset
+/* ============================================================================== */
+
+	.widget_ct_social fieldset,
+	.widget_ct_social ul,
+	.widget_ct_social li {	border: none; margin: 0; padding: 0; list-style: none;}
+
+/* ============================================================================== */
+/* List Styles
+/* ============================================================================== */
+
+	.widget_ct_social li { display: inline-block; margin: 0 5px 5px 0;}
+		.widget_ct_social li img { position: relative; border: none;}
+			.widget_ct_social li img:hover { top: -1px;}

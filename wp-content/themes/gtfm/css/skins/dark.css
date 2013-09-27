@@ -1,0 +1,95 @@
+/*
+* Skin - Dark
+* 
+* @package WP Form
+* @subpackage CSS
+*
+*/
+
+body { color: #bababa; background-color: #292929;}
+h1, h2, h3, h4, h5, h6, strong { color: #dedede !important;}
+	.header-wrap h2 { color: #fff !important;}
+	
+nav li a,
+nav li a:visited { color: #bababa !important;}	
+nav li.drop li a { color: #bababa !important; background-color: #292929;}
+	nav li.drop li a:hover { background-color: #303030;}
+	
+.ct-loading { background-color: #292929;}
+
+.boxed,
+header#masthead,
+nav .sub-menu li,
+nav li:hover .sub-menu,
+nav li .sub-menu ul,
+.borderBD,
+.portfolio,
+#home .portfolio-wrap,
+.post-meta,
+.border-top,
+.inside,
+hr.dotted-line,
+.post-social,
+#single .related,
+.flexslider .slides li,
+ul.ctTabs li:first-child a,
+.ts-fab-list li:first-child a,
+.aq_block_tabs ul.aq-nav li a,
+.aq_block_tabs ul.aq-nav li.ui-tabs-selected a,
+.aq_block_tabs li:first-child a,
+.aq_block_toggle h2.tab-head,
+.aq_block_accordion h2.tab-head,
+.aq_block_tabs .aq-tab,
+.aq_block_toggle,
+.aq_block_accordion,
+.aq_block_toggle .tab-body,
+.aq_block_accordion .tab-body,
+ul.ctTabs li a,
+.ts-fab-list li a,
+.article-wrap article,
+h4.aq-block-title,
+.comments-wrap,
+.comment-meta,
+.comment-list li,
+#comments-number,
+#reply-title,
+#respond,
+ol.comment-list,
+.comments-header,
+footer,
+#left-sidebar.article-wrap .eleven,
+#right-sidebar.article-wrap .eleven,
+.page-builder-wrap { border-color: #404040 !important;}
+	.aq_block_tabs ul.aq-nav li.ui-tabs-selected a { border-top-color: #5a7c87 !important;}
+
+ul.ctTabs li a,
+.aq_block_tabs ul.aq-nav li a,
+.ts-fab-list li a { color: #bababa;}
+	ul.ctTabs li a.selected,
+	.aq_block_tabs ul.aq-nav li.ui-tabs-selected a,
+	.ts-fab-list li.active a { color: #dedede; background: #303030;}
+	.ts-fab-list { border-right-color: #404040 !important;}
+
+#home .portfolio-wrap,
+.aq_block_tabs .aq-tab,
+.ts-fab-tab,
+.widget_ct_testimonials li,
+.inside ul,
+#comments,
+#respond,
+.aq_block_toggle h2.tab-head,
+.aq_block_accordion h2.tab-head,
+.aq_block_toggle .tab-body,
+.aq_block_accordion .tab-body,
+#secondary-footer-wrap,
+.comment-list li.bypostauthor,
+#respond form { background-color: #303030;}
+	#respond form { border-bottom: 1px solid #404040;}
+	
+.inside ul { padding: 10px; border-right: 1px solid #404040; border-left: 1px solid #404040; border-bottom: 1px solid #404040;}
+	
+.aq_block_toggle .tab-body,
+.aq_block_accordion .tab-body { border-top: 1px solid #404040; background: #222;}
+
+.aq_block_tabs ul.aq-nav li a,
+.aq_block_tabs ul.aq-nav li a:hover { background: none;}
