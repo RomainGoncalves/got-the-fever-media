@@ -9,3 +9,20 @@ Version: 		1.0.1
 */
 
 @import url("../gtfm/style.css");
+
+div#logo h2{
+	text-align: center
+}
+div#logo h2 a{
+	color: white;
+	font-size: 33px;
+}
+body#home header{
+	display: none;
+}
+.grid figcaption span{
+	display: none;	
+}
+.grid figcaption span:before{
+	content: '';
+}
