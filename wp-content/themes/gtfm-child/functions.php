@@ -55,3 +55,6 @@ function addImgBg(){
 
 add_action( 'login_head', addImgBg, $priority = 10 );
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+
+//Remove generator number
+remove_action('wp_head', 'wp_generator');
